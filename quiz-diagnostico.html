@@ -485,7 +485,23 @@
             <p id="secondPointText">Mesmo quando o aluno entra, ele não entende claramente o que vai mudar para ele — o que reduz o envolvimento já nos primeiros passos.</p>
           </div>
           
-          <div class="session-block">
+
+          <div class="session-block" id="newsletterBlock" style="display:none;">
+            <p class="session-context"><strong>✨ Próximo passo recomendado</strong></p>
+            <p class="session-context">É justamente para apoiar quem está nessa fase que existe a <strong>Newsletter GAME-ON®</strong>.</p>
+            <div class="session-highlight">
+              <p>Na Newsletter, você aprende como estruturar uma jornada que já nasce certa — antes de escalar.</p>
+            </div>
+            <div class="session-info">
+              <h3>O que você vai receber</h3>
+              <p>• Como estruturar uma jornada de aprendizagem do zero</p>
+              <p>• Como evitar gargalos antes de lançar</p>
+              <p>• Como criar engajamento, aplicação e continuidade desde o início</p>
+            </div>
+            <a href="#" class="session-cta-button" id="newsletterCTAButton">👉 Entrar na Newsletter GAME-ON® →</a>
+          </div>
+
+          <div class="session-block" id="sessionBlock">
             <p class="session-context">Na prática, essa dificuldade é o que chamamos de um <strong>ponto de perda de energia</strong> na experiência.</p>
             <p class="session-context">Isso não significa que seu curso não funciona — significa que ele ainda não foi estruturado para tornar os resultados visíveis e consistentes para o aluno.</p>
             
@@ -509,9 +525,9 @@
   </div>
   <script>
     var CONFIG = {
-      sessionURL: 'https://seulink.com/agendar-sessao',
-      newsletterURL: 'https://seulink.com/newsletter',
-      mailingBossURL: 'https://mailingboss.com/lists/SEU_ID_LISTA/subscribe'
+      sessionURL: 'https://api.whatsapp.com/send/?phone=5518996923377&text=Ol%C3%A1%21+Quero+agendar+Sessão+de+Diagnóstico+GAME-ON',
+      newsletterURL: 'https://rafaelavilelanews.beehiiv.com/',
+      mailingBossURL: 'https://mailingboss.com/lists/695d642bae830/subscribe'
     };
     var currentStep = 0;
     var answers = {};
@@ -550,8 +566,12 @@
       },
       construcao: {
         title: 'Experiência em Construção',
-        subtitle: '"Antes de corrigir vazamentos, o importante é não construí-los."',
-        items: ['Você ainda está estruturando seu curso ou mentoria', 'O mais inteligente agora é aprender a criar uma jornada que já nasce certa', 'Sem os erros que depois custam caro pra corrigir'],
+        subtitle: '"Quando a experiência é bem estruturada desde o início, muitos problemas deixam de existir."',
+        items: [
+          'Você ainda está estruturando seu curso ou mentoria',
+          'O mais inteligente agora é aprender a criar uma jornada que já nasce certa',
+          'Sem os erros que depois custam caro pra corrigir'
+        ],
         cta: 'Entrar na Newsletter GAME-ON®',
         isNewsletter: true
       }
@@ -665,22 +685,45 @@
       sortedScores.sort(function(a, b) { return b[1] - a[1]; });
       showResult(sortedScores[0][0], sortedScores[1][0]);
     }
+    
     function showResult(primary, secondary) {
       var result = results[primary];
+
       document.getElementById('resultTitle').textContent = result.title;
       document.getElementById('resultSubtitle').textContent = result.subtitle;
+
+      // Lista principal
       var listHtml = '';
       for (var i = 0; i < result.items.length; i++) {
         listHtml += '<li>⚠️ ' + result.items[i] + '</li>';
       }
       document.getElementById('resultList').innerHTML = listHtml;
+
+      // CTA (sessão ou newsletter)
       var ctaBtn = document.getElementById('resultCTAButton');
-      ctaBtn.href = result.isNewsletter ? CONFIG.newsletterURL : CONFIG.sessionURL;
+      var sessionBlock = document.getElementById('sessionBlock');
+      var newsletterBlock = document.getElementById('newsletterBlock');
+      var newsletterBtn = document.getElementById('newsletterCTAButton');
+
       if (result.isNewsletter) {
+        // Newsletter mode
+        if (newsletterBlock) newsletterBlock.style.display = 'block';
+        if (sessionBlock) sessionBlock.style.display = 'none';
+
+        if (newsletterBtn) {
+          newsletterBtn.href = CONFIG.newsletterURL;
+          newsletterBtn.textContent = '👉 ' + result.cta + ' →';
+        }
+      } else {
+        // Session mode
+        if (newsletterBlock) newsletterBlock.style.display = 'none';
+        if (sessionBlock) sessionBlock.style.display = 'block';
+
+        ctaBtn.href = CONFIG.sessionURL;
         ctaBtn.textContent = '👉 ' + result.cta + ' →';
       }
-      
-      // Segundo ponto de atenção baseado no SEGUNDO MAIOR SCORE
+
+      // Segundo ponto de atenção (só quando não é newsletter)
       var secondaryEl = document.getElementById('resultSecondary');
       if (secondary && secondPointTexts[secondary] && !result.isNewsletter) {
         var secondPoint = secondPointTexts[secondary];
@@ -691,6 +734,7 @@
         secondaryEl.style.display = 'none';
       }
     }
+
     function submitEmail() {
       var name = document.getElementById('userName').value.trim();
       var email = document.getElementById('userEmail').value.trim();
