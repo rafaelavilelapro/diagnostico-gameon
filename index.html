@@ -7,6 +7,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SDZHV0SXKJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SDZHV0SXKJ');
+  </script>
+  
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '820387444076157');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=820387444076157&ev=PageView&noscript=1"/></noscript>
+
   <style>
     :root {
       --primary: #1A365D;
@@ -288,6 +314,7 @@
           <button class="btn-next" onclick="nextStep()">Continuar →</button>
         </div>
       </div>
+      <!-- PERGUNTA 4 - AJUSTADA: adicionado "Não sei" -->
       <div class="quiz-step" data-step="5" data-score="entrada" data-type="positive">
         <span class="step-indicator">Pergunta 4 de 18</span>
         <h2 class="quiz-question">Depois que o aluno entra, ele entende claramente o valor do curso?</h2>
@@ -295,6 +322,7 @@
           <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Sim</label>
           <label class="quiz-option" data-value="as_vezes"><span class="option-indicator"></span>Às vezes</label>
           <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Não</label>
+          <label class="quiz-option" data-value="nao_sei"><span class="option-indicator"></span>Não sei</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
@@ -318,6 +346,7 @@
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
+      <!-- PERGUNTA 7 - AJUSTADA: adicionado "Não sei" -->
       <div class="quiz-step" data-step="8" data-score="continuidade" data-type="negative">
         <span class="step-indicator">Pergunta 7 de 18</span>
         <h2 class="quiz-question">Os alunos sentem que o curso é longo, confuso ou cansativo?</h2>
@@ -325,9 +354,11 @@
           <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Sim</label>
           <label class="quiz-option" data-value="as_vezes"><span class="option-indicator"></span>Às vezes</label>
           <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Não</label>
+          <label class="quiz-option" data-value="nao_sei"><span class="option-indicator"></span>Não sei</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
+      <!-- PERGUNTA 8 - AJUSTADA: adicionado "Não sei" -->
       <div class="quiz-step" data-step="9" data-score="acao" data-type="negative">
         <span class="step-indicator">Pergunta 8 de 18</span>
         <h2 class="quiz-question">Os alunos assistem às aulas, mas aplicam pouco o que aprendem?</h2>
@@ -335,6 +366,7 @@
           <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Sim</label>
           <label class="quiz-option" data-value="as_vezes"><span class="option-indicator"></span>Às vezes</label>
           <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Não</label>
+          <label class="quiz-option" data-value="nao_sei"><span class="option-indicator"></span>Não sei</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
@@ -358,23 +390,27 @@
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
+      <!-- PERGUNTA 11 - AJUSTADA: removido "raramente", adicionado "Não sei" -->
       <div class="quiz-step" data-step="12" data-score="prova" data-type="negative">
         <span class="step-indicator">Pergunta 11 de 18</span>
-        <h2 class="quiz-question">Alunos raramente indicam seu curso para outras pessoas?</h2>
+        <h2 class="quiz-question">Seus alunos indicam seu curso para outras pessoas?</h2>
         <div class="quiz-options">
-          <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Sim</label>
+          <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Sim, com frequência</label>
           <label class="quiz-option" data-value="as_vezes"><span class="option-indicator"></span>Às vezes</label>
-          <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Não</label>
+          <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Quase nunca</label>
+          <label class="quiz-option" data-value="nao_sei"><span class="option-indicator"></span>Não sei</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
+      <!-- PERGUNTA 12 - AJUSTADA: texto mais claro -->
       <div class="quiz-step" data-step="13" data-score="fechamento" data-type="negative">
         <span class="step-indicator">Pergunta 12 de 18</span>
-        <h2 class="quiz-question">Muitos alunos não concluem oficialmente o curso?</h2>
+        <h2 class="quiz-question">A porcentagem de alunos que concluem o curso oficialmente é pequena?</h2>
         <div class="quiz-options">
-          <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Sim</label>
-          <label class="quiz-option" data-value="as_vezes"><span class="option-indicator"></span>Às vezes</label>
-          <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Não</label>
+          <label class="quiz-option" data-value="sim"><span class="option-indicator"></span>Sim, poucos concluem</label>
+          <label class="quiz-option" data-value="as_vezes"><span class="option-indicator"></span>Mais ou menos</label>
+          <label class="quiz-option" data-value="nao"><span class="option-indicator"></span>Não, a maioria conclui</label>
+          <label class="quiz-option" data-value="nao_sei"><span class="option-indicator"></span>Não sei</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
@@ -395,14 +431,15 @@
           <button class="btn-next" onclick="nextStep()">Continuar →</button>
         </div>
       </div>
+      <!-- PERGUNTA 14 - AJUSTADA: alinhamento do texto "continuar" vs "continuidade" -->
       <div class="quiz-step" data-step="16" data-tiebreaker="true" data-weight="2">
         <span class="step-indicator">Pergunta 14 de 18</span>
         <h2 class="quiz-question">O que mais te incomoda hoje?</h2>
         <div class="quiz-options">
-          <label class="quiz-option" data-value="continuidade" data-tie="continuidade"><span class="option-indicator"></span>Alunos somem</label>
-          <label class="quiz-option" data-value="acao" data-tie="acao"><span class="option-indicator"></span>Alunos não aplicam</label>
-          <label class="quiz-option" data-value="prova" data-tie="prova"><span class="option-indicator"></span>Falta reconhecimento / prova</label>
-          <label class="quiz-option" data-value="fechamento" data-tie="fechamento"><span class="option-indicator"></span>Curso não gera continuidade depois</label>
+          <label class="quiz-option" data-value="continuidade" data-tie="continuidade"><span class="option-indicator"></span>Alunos somem no meio do curso</label>
+          <label class="quiz-option" data-value="acao" data-tie="acao"><span class="option-indicator"></span>Alunos não aplicam o que aprendem</label>
+          <label class="quiz-option" data-value="prova" data-tie="prova"><span class="option-indicator"></span>Falta reconhecimento / prova social</label>
+          <label class="quiz-option" data-value="fechamento" data-tie="fechamento"><span class="option-indicator"></span>Alunos não continuam após o curso</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
@@ -417,14 +454,15 @@
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
+      <!-- PERGUNTA 16 - AJUSTADA: texto mais claro -->
       <div class="quiz-step" data-step="18" data-tiebreaker="true" data-weight="3">
         <span class="step-indicator">Pergunta 16 de 18</span>
         <h2 class="quiz-question">Se você pudesse resolver só UMA coisa agora, qual seria?</h2>
         <div class="quiz-options">
-          <label class="quiz-option" data-value="continuidade" data-tie="continuidade"><span class="option-indicator"></span>Fazer o aluno continuar</label>
-          <label class="quiz-option" data-value="acao" data-tie="acao"><span class="option-indicator"></span>Fazer o aluno aplicar</label>
-          <label class="quiz-option" data-value="prova" data-tie="prova"><span class="option-indicator"></span>Tornar resultados visíveis</label>
-          <label class="quiz-option" data-value="fechamento" data-tie="fechamento"><span class="option-indicator"></span>Criar continuidade após o curso</label>
+          <label class="quiz-option" data-value="continuidade" data-tie="continuidade"><span class="option-indicator"></span>Fazer o aluno avançar até o final</label>
+          <label class="quiz-option" data-value="acao" data-tie="acao"><span class="option-indicator"></span>Fazer o aluno aplicar o que aprende</label>
+          <label class="quiz-option" data-value="prova" data-tie="prova"><span class="option-indicator"></span>Tornar resultados visíveis (depoimentos, cases)</label>
+          <label class="quiz-option" data-value="fechamento" data-tie="fechamento"><span class="option-indicator"></span>Criar continuidade após o curso (recompra, comunidade)</label>
         </div>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()">← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
       </div>
@@ -524,15 +562,31 @@
     </main>
   </div>
   <script>
+    // ============ CONFIGURAÇÕES ============
     var CONFIG = {
-      sessionURL: 'https://api.whatsapp.com/send/?phone=5518996923377&text=Ol%C3%A1%21+Quero+agendar+Sessão+de+Diagnóstico+GAME-ON',
+      // URLs de destino
+      sessionURL: 'https://api.whatsapp.com/send/?phone=5518996923377&text=Ol%C3%A1%21+Quero+agendar+Sess%C3%A3o+de+Diagn%C3%B3stico+GAME-ON',
       newsletterURL: 'https://rafaelavilelanews.beehiiv.com/',
-      mailingBossURL: 'https://mailingboss.com/lists/695d642bae830/subscribe'
+      
+      // Apps Script (Brevo integration)
+      appsScriptURL: 'https://script.google.com/macros/s/AKfycbwq_uz1GgU5vaVa82jqIDpDMxkAYLHt172-Pfnrk8oKwOf1H9xOni4nQhQJKbwMP8Ba/exec'
     };
+    // =======================================
+
+    // Captura parâmetros da URL (email, UTMs)
+    var urlParams = new URLSearchParams(window.location.search);
+    var emailFromURL = urlParams.get('email') || '';
+    var utmSource = urlParams.get('utm_source') || '';
+    var utmMedium = urlParams.get('utm_medium') || '';
+    var utmCampaign = urlParams.get('utm_campaign') || '';
+    var utmContent = urlParams.get('utm_content') || '';
+
     var currentStep = 0;
     var answers = {};
     var scores = { entrada: 0, continuidade: 0, acao: 0, prova: 0, fechamento: 0 };
     var tieScores = { entrada: 0, continuidade: 0, acao: 0, prova: 0, fechamento: 0 };
+    var quizStarted = false;
+    
     var results = {
       entrada: {
         title: 'Dificuldade em Ativar o Aluno no Início da Jornada',
@@ -577,7 +631,6 @@
       }
     };
     
-    // Textos do segundo ponto baseados no segundo maior score
     var secondPointTexts = {
       entrada: {
         title: 'Expectativa desalinhada logo no começo',
@@ -600,33 +653,105 @@
         text: 'Sem um fechamento simbólico e um convite natural para a continuidade, o aluno encerra a experiência sem saber como seguir.'
       }
     };
+
+    // ============ TRACKING FUNCTIONS ============
+    
+    function trackEvent(eventName, eventData) {
+      // GA4
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, eventData);
+      }
+      
+      // Meta Pixel
+      if (typeof fbq !== 'undefined') {
+        fbq('track', eventName, eventData);
+      }
+      
+      console.log('Track:', eventName, eventData);
+    }
+
+    function sendToAppsScript(tipo, data) {
+      if (!CONFIG.appsScriptURL) return;
+      
+      try {
+        fetch(CONFIG.appsScriptURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tipo: tipo,
+            ...data,
+            utm_source: utmSource,
+            utm_medium: utmMedium,
+            utm_campaign: utmCampaign,
+            utm_content: utmContent
+          })
+        });
+      } catch (error) {
+        console.error('Erro ao enviar para Apps Script:', error);
+      }
+    }
+
+    // ============ QUIZ FUNCTIONS ============
+
     function startQuiz() {
       document.getElementById('landingPage').style.display = 'none';
       document.getElementById('quizContainer').classList.add('active');
       window.scrollTo(0, 0);
+      
+      // Track quiz page view
+      trackEvent('quiz_view', { page: 'diagnostico-gameon' });
     }
+
     function nextStep() {
       saveCurrentAnswer();
+      
+      // Se está saindo do step 0 (clicou "Vamos começar"), dispara quiz_iniciou
+      if (currentStep === 0 && !quizStarted) {
+        quizStarted = true;
+        
+        // Track quiz_iniciou
+        trackEvent('quiz_start', { quiz_name: 'diagnostico-gameon' });
+        
+        // Envia para Apps Script (se tiver email da URL)
+        sendToAppsScript('evento', {
+          email: emailFromURL,
+          evento: 'quiz_iniciou',
+          origem: 'quiz_diagnostico',
+          detalhes: emailFromURL ? 'com_email' : 'sem_email'
+        });
+      }
+      
       currentStep++;
+      
       if (currentStep === 22) {
         showStep(currentStep);
         updateProgress();
         setTimeout(function() { calculateResult(); currentStep = 23; showStep(currentStep); }, 2500);
         return;
       }
+      
       showStep(currentStep);
       updateProgress();
       window.scrollTo(0, 0);
     }
+
     function prevStep() {
-      if (currentStep > 0) { currentStep--; showStep(currentStep); updateProgress(); window.scrollTo(0, 0); }
+      if (currentStep > 0) { 
+        currentStep--; 
+        showStep(currentStep); 
+        updateProgress(); 
+        window.scrollTo(0, 0); 
+      }
     }
+
     function showStep(step) {
       var steps = document.querySelectorAll('.quiz-step');
       for (var i = 0; i < steps.length; i++) { steps[i].classList.remove('active'); }
       var stepEl = document.querySelector('.quiz-step[data-step="' + step + '"]');
       if (stepEl) { stepEl.classList.add('active'); restoreSelection(stepEl); }
     }
+
     function updateProgress() {
       var questionSteps = [1,2,3,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20];
       var answered = 0;
@@ -635,6 +760,7 @@
       document.getElementById('progressFill').style.width = progress + '%';
       document.getElementById('progressText').textContent = progress + '%';
     }
+
     function saveCurrentAnswer() {
       var stepEl = document.querySelector('.quiz-step[data-step="' + currentStep + '"]');
       if (!stepEl) return;
@@ -645,18 +771,26 @@
       var scoreType = stepEl.getAttribute('data-score');
       var questionType = stepEl.getAttribute('data-type');
       var isTiebreaker = stepEl.getAttribute('data-tiebreaker') === 'true';
+      
       if (scoreType && !isTiebreaker) {
         var points = 0;
-        if (questionType === 'positive') { points = value === 'sim' ? 0 : value === 'as_vezes' ? 1 : 2; }
-        else if (questionType === 'negative') { points = value === 'sim' ? 2 : value === 'as_vezes' ? 1 : 0; }
+        if (value === 'nao_sei') {
+          points = 1; // "Não sei" conta como parcial
+        } else if (questionType === 'positive') { 
+          points = value === 'sim' ? 0 : value === 'as_vezes' ? 1 : 2; 
+        } else if (questionType === 'negative') { 
+          points = value === 'sim' ? 2 : value === 'as_vezes' ? 1 : 0; 
+        }
         scores[scoreType] += points;
       }
+      
       if (isTiebreaker) {
         var weight = parseInt(stepEl.getAttribute('data-weight')) || 1;
         var tieTarget = selectedOption.getAttribute('data-tie');
         if (tieTarget) tieScores[tieTarget] += weight;
       }
     }
+
     function restoreSelection(stepEl) {
       var savedAnswer = answers[stepEl.getAttribute('data-step')];
       if (!savedAnswer) return;
@@ -668,6 +802,7 @@
       var nextBtn = stepEl.querySelector('.btn-next');
       if (nextBtn) nextBtn.disabled = false;
     }
+
     function calculateResult() {
       if (answers[1] === 'nao_tenho') { showResult('construcao', null); return; }
       var finalScores = {
@@ -692,38 +827,31 @@
       document.getElementById('resultTitle').textContent = result.title;
       document.getElementById('resultSubtitle').textContent = result.subtitle;
 
-      // Lista principal
       var listHtml = '';
       for (var i = 0; i < result.items.length; i++) {
         listHtml += '<li>⚠️ ' + result.items[i] + '</li>';
       }
       document.getElementById('resultList').innerHTML = listHtml;
 
-      // CTA (sessão ou newsletter)
       var ctaBtn = document.getElementById('resultCTAButton');
       var sessionBlock = document.getElementById('sessionBlock');
       var newsletterBlock = document.getElementById('newsletterBlock');
       var newsletterBtn = document.getElementById('newsletterCTAButton');
 
       if (result.isNewsletter) {
-        // Newsletter mode
         if (newsletterBlock) newsletterBlock.style.display = 'block';
         if (sessionBlock) sessionBlock.style.display = 'none';
-
         if (newsletterBtn) {
           newsletterBtn.href = CONFIG.newsletterURL;
           newsletterBtn.textContent = '👉 ' + result.cta + ' →';
         }
       } else {
-        // Session mode
         if (newsletterBlock) newsletterBlock.style.display = 'none';
         if (sessionBlock) sessionBlock.style.display = 'block';
-
         ctaBtn.href = CONFIG.sessionURL;
         ctaBtn.textContent = '👉 ' + result.cta + ' →';
       }
 
-      // Segundo ponto de atenção (só quando não é newsletter)
       var secondaryEl = document.getElementById('resultSecondary');
       if (secondary && secondPointTexts[secondary] && !result.isNewsletter) {
         var secondPoint = secondPointTexts[secondary];
@@ -733,15 +861,28 @@
       } else {
         secondaryEl.style.display = 'none';
       }
+
+      // Track quiz result view
+      trackEvent('quiz_result', { 
+        quiz_name: 'diagnostico-gameon',
+        result_primary: primary,
+        result_secondary: secondary || 'none'
+      });
     }
 
     function submitEmail() {
       var name = document.getElementById('userName').value.trim();
       var email = document.getElementById('userEmail').value.trim();
+      
       if (!name || !email) { alert('Por favor, preencha nome e email.'); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Email inválido.'); return; }
+      
+      // Calcula resultado
       calculateResult();
+      
       var resultTag = 'construcao';
+      var secondResult = '';
+      
       if (answers[1] !== 'nao_tenho') {
         var finalScores = {
           entrada: scores.entrada + tieScores.entrada,
@@ -754,37 +895,19 @@
         for (var k in finalScores) { sortedScores.push([k, finalScores[k]]); }
         sortedScores.sort(function(a, b) { return b[1] - a[1]; });
         resultTag = sortedScores[0][0];
-      }
-      sendToMailingBoss(name, email, resultTag);
-      nextStep();
-    }
-    function sendToMailingBoss(name, email, resultTag) {
-      // Calcular segundo resultado
-      var secondResult = '';
-      if (answers[1] !== 'nao_tenho') {
-        var finalScores = {
-          entrada: scores.entrada + tieScores.entrada,
-          continuidade: scores.continuidade + tieScores.continuidade,
-          acao: scores.acao + tieScores.acao,
-          prova: scores.prova + tieScores.prova,
-          fechamento: scores.fechamento + tieScores.fechamento
-        };
-        var sortedScores = [];
-        for (var k in finalScores) { sortedScores.push([k, finalScores[k]]); }
-        sortedScores.sort(function(a, b) { return b[1] - a[1]; });
         secondResult = sortedScores[1] ? sortedScores[1][0] : '';
       }
-      
-      // Labels para resultados
+
+      // Labels para resultados (legíveis)
       var resultadoLabels = {
         'entrada': 'Entrada',
         'continuidade': 'Continuidade',
-        'acao': 'Ação',
+        'acao': 'Acao',
         'prova': 'Prova Social',
         'fechamento': 'Fechamento',
-        'construcao': 'Em Construção'
+        'construcao': 'Em Construcao'
       };
-      
+
       // Mapear P1: tem_curso
       var temCursoMap = {
         'sim_vendo': 'Sim, já vendo',
@@ -808,7 +931,7 @@
         'nao_sei': 'Não sei dizer'
       };
       
-      // Mapear P17: sentimento
+      // Mapear P19: sentimento
       var sentimentoMap = {
         'algo_errado': 'Meu curso é bom, mas algo está errado',
         'entrego_mais': 'Entrego mais do que o aluno aproveita',
@@ -816,51 +939,76 @@
         'nao_sei': 'Não sei onde está o problema'
       };
       
-      // Mapear P18: preocupacao
+      // Mapear P20: preocupacao
       var preocupacaoMap = {
         'rasgando_dinheiro': 'Continuar investindo sem retorno',
         'perder_confianca': 'Perder confiança no meu trabalho',
         'alunos_frustrados': 'Alunos frustrados',
         'desistir_escalar': 'Desistir de escalar'
       };
+
+      // Track Lead (quiz completion)
+      trackEvent('Lead', { 
+        content_name: 'quiz_diagnostico_gameon',
+        quiz_result: resultTag 
+      });
       
-      // Preencher formulário oculto
-      document.getElementById('mb_name').value = name;
-      document.getElementById('mb_email').value = email;
-      
-      // Resultados
-      document.getElementById('mb_quiz_resultado').value = resultTag;
-      document.getElementById('mb_resultado_principal').value = resultadoLabels[resultTag] || resultTag;
-      document.getElementById('mb_resultado_secundario').value = resultadoLabels[secondResult] || secondResult;
-      
-      // Respostas qualitativas
-      document.getElementById('mb_tem_curso').value = temCursoMap[answers[1]] || '';
-      document.getElementById('mb_incomodo').value = incomodoMap[answers[2]] || '';
-      document.getElementById('mb_problema_em').value = problemaMap[answers[3]] || '';
-      document.getElementById('mb_sentimento').value = sentimentoMap[answers[19]] || '';
-      document.getElementById('mb_preocupacao').value = preocupacaoMap[answers[20]] || '';
-      
-      // Scores
-      document.getElementById('mb_score_entrada').value = String(scores.entrada + tieScores.entrada);
-      document.getElementById('mb_score_continuidade').value = String(scores.continuidade + tieScores.continuidade);
-      document.getElementById('mb_score_acao').value = String(scores.acao + tieScores.acao);
-      document.getElementById('mb_score_prova').value = String(scores.prova + tieScores.prova);
-      document.getElementById('mb_score_fechamento').value = String(scores.fechamento + tieScores.fechamento);
-      
-      // Data
-      document.getElementById('mb_quiz_data').value = new Date().toISOString().split('T')[0];
-      
-      // Enviar formulário
-      document.getElementById('mailingBossForm').submit();
-      
-      console.log('Lead enviado para Mailing Boss:', {
-        name: name,
+      // Track CompleteRegistration
+      trackEvent('CompleteRegistration', {
+        content_name: 'quiz_diagnostico_gameon',
+        status: 'completed'
+      });
+
+      // Envia dados completos do quiz para Apps Script (tipo: quiz)
+      // Isso salva na aba Quiz E adiciona tags no Brevo
+      sendToAppsScript('quiz', {
         email: email,
+        nome: name,
+        origem: 'quiz_diagnostico',
+        // Resultados
+        quiz_resultado: resultTag,
+        resultado_principal: resultadoLabels[resultTag] || resultTag,
+        resultado_secundario: resultadoLabels[secondResult] || secondResult,
+        // Qualificação (respostas legíveis)
+        tem_curso: temCursoMap[answers[1]] || answers[1] || '',
+        incomodo: incomodoMap[answers[2]] || answers[2] || '',
+        problema_em: problemaMap[answers[3]] || answers[3] || '',
+        sentimento: sentimentoMap[answers[19]] || answers[19] || '',
+        preocupacao: preocupacaoMap[answers[20]] || answers[20] || '',
+        // Scores
+        score_entrada: scores.entrada + tieScores.entrada,
+        score_continuidade: scores.continuidade + tieScores.continuidade,
+        score_acao: scores.acao + tieScores.acao,
+        score_prova: scores.prova + tieScores.prova,
+        score_fechamento: scores.fechamento + tieScores.fechamento,
+        // Extras (dados brutos para análise)
+        page_url: window.location.href,
+        extras: {
+          respostas_raw: answers,
+          scores_raw: scores,
+          tieScores_raw: tieScores
+        }
+      });
+
+      console.log('Quiz enviado para Brevo via Apps Script:', {
+        email: email,
+        nome: name,
         resultado: resultTag,
         secundario: secondResult
       });
+
+      nextStep();
     }
+
+    // ============ INITIALIZATION ============
+    
     document.addEventListener('DOMContentLoaded', function() {
+      // Pré-preenche email se veio da URL
+      if (emailFromURL) {
+        document.getElementById('userEmail').value = emailFromURL;
+      }
+      
+      // Event listeners para opções
       var options = document.querySelectorAll('.quiz-option');
       for (var i = 0; i < options.length; i++) {
         options[i].addEventListener('click', function() {
@@ -872,50 +1020,15 @@
           if (nextBtn) nextBtn.disabled = false;
         });
       }
+      
+      // Enter no campo de email
       document.getElementById('userEmail').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') submitEmail();
       });
+      
+      // Track page view
+      trackEvent('PageView', { page: 'diagnostico-gameon' });
     });
   </script>
-
-  <!-- FORMULÁRIO MAILING BOSS (oculto) -->
-  <form
-    id="mailingBossForm"
-    method="POST"
-    action="https://mailingboss.com/lists/695d642bae830/subscribe"
-    target="mailing-iframe"
-    style="display:none;"
-  >
-    <!-- Campos padrão (MAIÚSCULAS conforme Mailing Boss) -->
-    <input type="text" name="FNAME" id="mb_name">
-    <input type="email" name="EMAIL" id="mb_email">
-
-    <!-- Resultado do quiz -->
-    <input type="hidden" name="QUIZ_RESULTADO" id="mb_quiz_resultado">
-    <input type="hidden" name="RESULTADO_PRINCIPAL" id="mb_resultado_principal">
-    <input type="hidden" name="RESULTADO_SECUNDARIO" id="mb_resultado_secundario">
-
-    <!-- Qualificação -->
-    <input type="hidden" name="TEM_CURSO" id="mb_tem_curso">
-    <input type="hidden" name="INCOMODO" id="mb_incomodo">
-    <input type="hidden" name="PROBLEMA_EM" id="mb_problema_em">
-    <input type="hidden" name="SENTIMENTO" id="mb_sentimento">
-    <input type="hidden" name="PREOCUPACAO" id="mb_preocupacao">
-
-    <!-- Scores -->
-    <input type="hidden" name="SCORE_ENTRADA" id="mb_score_entrada">
-    <input type="hidden" name="SCORE_CONTINUIDADE" id="mb_score_continuidade">
-    <input type="hidden" name="SCORE_ACAO" id="mb_score_acao">
-    <input type="hidden" name="SCORE_PROVA" id="mb_score_prova">
-    <input type="hidden" name="SCORE_FECHAMENTO" id="mb_score_fechamento">
-
-    <!-- Metadados -->
-    <input type="hidden" name="QUIZ_SOURCE" id="mb_quiz_source" value="quiz-diagnostico-gameon">
-    <input type="hidden" name="QUIZ_DATA" id="mb_quiz_data">
-  </form>
-  
-  <!-- Iframe oculto para não redirecionar -->
-  <iframe name="mailing-iframe" id="mailing-iframe" style="display:none;"></iframe>
-
 </body>
 </html>
