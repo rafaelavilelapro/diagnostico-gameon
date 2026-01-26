@@ -543,19 +543,19 @@
           </div>
 
           <div class="session-block" id="sessionBlock">
-            <p class="session-context">Na prática, essa dificuldade é o que chamamos de um <strong>ponto de perda de energia</strong> na experiência.</p>
-            <p class="session-context">Isso não significa que seu curso não funciona — significa que ele ainda não foi estruturado para tornar os resultados visíveis e consistentes para o aluno.</p>
+            <p class="session-context">Esse tipo de dificuldade é o que impede seu curso de crescer de forma sustentável — mesmo quando o conteúdo é bom e as vendas acontecem.</p>
+            <p class="session-context">Isso não significa que seu curso não funciona. Significa que a estrutura ainda não sustenta o <strong>progresso do aluno até o fim</strong>.</p>
             
             <div class="session-highlight">
-              <p>✨ A boa notícia: esse tipo de ponto pode ser corrigido com ajustes estratégicos, sem refazer tudo do zero.</p>
+              <p>✨ A boa notícia: isso se resolve com método, não com mais tráfego.</p>
             </div>
             
-            <p class="session-transition">É justamente para identificar e corrigir esse tipo de ponto que existe a Sessão de Diagnóstico GAME-ON®.</p>
+            <p class="session-transition">Gravei um vídeo curto (7 min) onde explico:</p>
             
             <div class="session-info">
-              <h3>O que acontece na Sessão de Diagnóstico GAME-ON®</h3>
-              <p>Nesta sessão, analisamos juntos o seu curso, identificamos onde a experiência perde força e desenhamos os próximos ajustes mais inteligentes para o seu momento atual.</p>
-              <p>Não é uma consultoria genérica — é um olhar estratégico para estruturar engajamento, aplicação e continuidade antes de escalar.</p>
+              <p>→ Por que cursos bons não crescem mesmo vendendo bem</p>
+              <p>→ O erro estrutural mais comum que trava engajamento</p>
+              <p>→ A lógica por trás de cursos que crescem porque o aluno avança</p>
             </div>
             
             <a href="#" class="session-cta-button" id="resultCTAButton">👉 Agendar Sessão de Diagnóstico GAME-ON® →</a>
@@ -567,7 +567,7 @@
   <script>
     // ============ CONFIGURAÇÕES ============
     var CONFIG = {
-      sessionURL: 'https://api.whatsapp.com/send/?phone=5518996923377&text=Ol%C3%A1%21+Quero+agendar+Sess%C3%A3o+de+Diagn%C3%B3stico+GAME-ON',
+      videoURL: 'https://rafaelavilelapro.github.io/ir/video',
       newsletterURL: 'https://rafaelavilelanews.beehiiv.com/',
       appsScriptURL: 'https://script.google.com/macros/s/AKfycbwq_uz1GgU5vaVa82jqIDpDMxkAYLHt172-Pfnrk8oKwOf1H9xOni4nQhQJKbwMP8Ba/exec'
     };
@@ -592,31 +592,31 @@
         title: 'Dificuldade em Ativar o Aluno no Início da Jornada',
         subtitle: '"O seu curso pode até ser bom — mas o aluno não entende isso rápido o suficiente."',
         items: ['O aluno entra animado, mas logo se sente perdido', 'Não fica claro o que fazer primeiro', 'O valor real não é percebido nos primeiros dias', 'A motivação inicial evapora'],
-        cta: 'Agendar Sessão de Diagnóstico GAME-ON®'
+        cta: 'Assistir o vídeo (7 min)'
       },
       continuidade: {
         title: 'Dificuldade em Manter o Aluno Avançando',
         subtitle: '"O problema não é o começo. É o que acontece depois do entusiasmo inicial."',
         items: ['Alunos somem no meio do curso', 'Falta ritmo e sensação de progresso', 'O curso parece "longo demais"', 'O aluno perde o fio da jornada'],
-        cta: 'Agendar Sessão de Diagnóstico GAME-ON®'
+        cta: 'Assistir o vídeo (7 min)'
       },
       acao: {
         title: 'Dificuldade em Transformar Conteúdo em Ação',
         subtitle: '"Seus alunos assistem, entendem… mas não transformam em resultado."',
         items: ['Conteúdo é bom, mas passivo', 'Falta clareza do "o que fazer agora"', 'Resultados não ficam visíveis', 'Sem resultado, engajamento cai'],
-        cta: 'Agendar Sessão de Diagnóstico GAME-ON®'
+        cta: 'Assistir o vídeo (7 min)'
       },
       prova: {
         title: 'Resultados Pouco Visíveis para o Aluno',
         subtitle: '"O seu curso gera valor — mas isso não aparece para o mundo."',
         items: ['Depoimentos só surgem quando você pede', 'Poucos indicam espontaneamente', 'Resultados não são celebrados', 'O impacto fica invisível'],
-        cta: 'Agendar Sessão de Diagnóstico GAME-ON®'
+        cta: 'Assistir o vídeo (7 min)'
       },
       fechamento: {
         title: 'Dificuldade em Encerrar e Dar Continuidade à Jornada',
         subtitle: '"Seus alunos não encerram ciclos — por isso não continuam com você."',
         items: ['Muitos não concluem oficialmente', 'Falta sensação de jornada completa', 'O aluno sai "em silêncio"', 'Pouca recompra, pouco LTV'],
-        cta: 'Agendar Sessão de Diagnóstico GAME-ON®'
+        cta: 'Assistir o vídeo (7 min)'
       },
       construcao: {
         title: 'Experiência em Construção',
@@ -857,22 +857,37 @@
       document.getElementById('resultList').innerHTML = listHtml;
 
       var ctaBtn = document.getElementById('resultCTAButton');
-      var sessionBlock = document.getElementById('sessionBlock');
+      var videoBlock = document.getElementById('sessionBlock');
       var newsletterBlock = document.getElementById('newsletterBlock');
       var newsletterBtn = document.getElementById('newsletterCTAButton');
 
+      // Pega email do formulário (se já preenchido) ou da URL
+      var userEmail = document.getElementById('userEmail').value.trim() || emailFromURL;
+
       if (result.isNewsletter) {
         if (newsletterBlock) newsletterBlock.style.display = 'block';
-        if (sessionBlock) sessionBlock.style.display = 'none';
+        if (videoBlock) videoBlock.style.display = 'none';
         if (newsletterBtn) {
           newsletterBtn.href = CONFIG.newsletterURL;
           newsletterBtn.textContent = '👉 ' + result.cta + ' →';
         }
       } else {
         if (newsletterBlock) newsletterBlock.style.display = 'none';
-        if (sessionBlock) sessionBlock.style.display = 'block';
-        ctaBtn.href = CONFIG.sessionURL;
-        ctaBtn.textContent = '👉 ' + result.cta + ' →';
+        if (videoBlock) videoBlock.style.display = 'block';
+        
+        // Constrói URL do vídeo com email e UTMs
+        var videoParams = [];
+        if (userEmail) videoParams.push('email=' + encodeURIComponent(userEmail));
+        if (utmSource) videoParams.push('utm_source=' + encodeURIComponent(utmSource));
+        if (utmMedium) videoParams.push('utm_medium=' + encodeURIComponent(utmMedium));
+        videoParams.push('utm_campaign=' + encodeURIComponent(utmCampaign || 'quiz_diagnostico'));
+        if (utmContent) videoParams.push('utm_content=' + encodeURIComponent(utmContent));
+        videoParams.push('resultado=' + encodeURIComponent(primary));
+        
+        var videoURL = CONFIG.videoURL + '?' + videoParams.join('&');
+        
+        ctaBtn.href = videoURL;
+        ctaBtn.textContent = '🎬 ' + result.cta + ' →';
       }
 
       var secondaryEl = document.getElementById('resultSecondary');
