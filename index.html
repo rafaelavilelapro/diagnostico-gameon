@@ -909,6 +909,13 @@
     }
 
     function updateProgress() {
+      // Se pulou para newsletter, mostra 100%
+      if (skipToNewsletter) {
+        document.getElementById('progressFill').style.width = '100%';
+        document.getElementById('progressText').textContent = '100%';
+        return;
+      }
+      
       var questionSteps = [1,2,3,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20];
       var answered = 0;
       for (var i = 0; i < questionSteps.length; i++) { if (answers[questionSteps[i]]) answered++; }
