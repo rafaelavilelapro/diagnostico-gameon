@@ -287,13 +287,15 @@
       </div>
       <div class="quiz-step" data-step="1">
         <span class="step-indicator">Pergunta 1 de 18</span>
-        <h2 class="quiz-question">Você já tem um curso ou mentoria?</h2>
+        <h2 class="quiz-question">Você é:</h2>
         <div class="quiz-options">
-          <label class="quiz-option" data-value="sim_vendo"><span class="option-indicator"></span>Sim, já vendo</label>
-          <label class="quiz-option" data-value="sim_estruturando"><span class="option-indicator"></span>Sim, mas ainda estou estruturando</label>
-          <label class="quiz-option" data-value="nao_tenho"><span class="option-indicator"></span>Ainda não tenho</label>
+          <label class="quiz-option" data-value="curso_ativo"><span class="option-indicator"></span>Já tenho mentoria/curso online ativo</label>
+          <label class="quiz-option" data-value="primeira_mentoria"><span class="option-indicator"></span>Criando minha primeira mentoria/curso</label>
+          <label class="quiz-option" data-value="planejando_lancar"><span class="option-indicator"></span>Planejando lançar algo em breve</label>
+          <label class="quiz-option" data-value="pesquisando_gamificacao"><span class="option-indicator"></span>Pesquisando sobre gamificação</label>
+          <label class="quiz-option" data-value="agencia_infoprodutor"><span class="option-indicator"></span>Trabalho com infoprodutores / agência</label>
         </div>
-        <div class="quiz-nav"><button class="btn-back" onclick="prevStep()" disabled>← Voltar</button><button class="btn-next" onclick="nextStep()" disabled>Continuar →</button></div>
+        <div class="quiz-nav"><button class="btn-back" onclick="prevStep()" disabled>← Voltar</button><button class="btn-next" onclick="handlePerfilAnswer()" disabled>Continuar →</button></div>
       </div>
       <div class="quiz-step" data-step="2">
         <span class="step-indicator">Pergunta 2 de 18</span>
@@ -529,17 +531,61 @@
 
           <div class="session-block" id="newsletterBlock" style="display:none;">
             <p class="session-context"><strong>✨ Próximo passo recomendado</strong></p>
-            <p class="session-context">É justamente para apoiar quem está nessa fase que existe a <strong>Newsletter GAME-ON®</strong>.</p>
+            <p class="session-context">Antes de pensar em vender ou escalar, o mais inteligente agora é desenvolver o <strong>olhar estratégico certo</strong>.</p>
             <div class="session-highlight">
-              <p>Na Newsletter, você aprende como estruturar uma jornada que já nasce certa — antes de escalar.</p>
+              <p>É exatamente para isso que existe a Newsletter GAME-ON®.</p>
             </div>
             <div class="session-info">
-              <h3>O que você vai receber</h3>
-              <p>• Como estruturar uma jornada de aprendizagem do zero</p>
-              <p>• Como evitar gargalos antes de lançar</p>
-              <p>• Como criar engajamento, aplicação e continuidade desde o início</p>
+              <h3>Na Newsletter, eu compartilho toda semana:</h3>
+              <p>→ Reflexões estratégicas sobre por que alunos desistem</p>
+              <p>→ Trocas de mentalidade que mudam a forma de enxergar seu curso</p>
+              <p>→ Princípios de gamificação que criam continuidade real</p>
+              <p>→ Erros silenciosos que travam engajamento e recompra</p>
             </div>
             <a href="#" class="session-cta-button" id="newsletterCTAButton">👉 Entrar na Newsletter GAME-ON® →</a>
+          </div>
+
+          <!-- Bloco Newsletter - Construindo -->
+          <div class="session-block" id="construindoBlock" style="display:none;">
+            <p class="session-context">Se você está construindo seu curso ou mentoria agora, o jogo aqui é outro.</p>
+            <p class="session-context">O erro mais comum nessa fase é criar conteúdo primeiro e tentar corrigir a experiência depois.</p>
+            <p class="session-context">Isso gera <strong>retrabalho, frustração e dificuldade de crescimento</strong> lá na frente.</p>
+            
+            <div class="session-highlight">
+              <p>✨ Antes de pensar em vender ou escalar, o mais inteligente agora é desenvolver o olhar estratégico certo.</p>
+            </div>
+            
+            <p class="session-transition">Na Newsletter GAME-ON®, eu compartilho toda semana:</p>
+            
+            <div class="session-info">
+              <p>→ Reflexões estratégicas sobre por que alunos desistem</p>
+              <p>→ Trocas de mentalidade que mudam a forma de enxergar seu curso</p>
+              <p>→ Princípios de gamificação que criam continuidade real</p>
+              <p>→ Erros silenciosos que travam engajamento e recompra</p>
+            </div>
+            
+            <a href="https://rafaelavilelanews.beehiiv.com/" class="session-cta-button" id="construindoCTAButton">👉 Entrar na Newsletter GAME-ON® →</a>
+          </div>
+
+          <!-- Bloco Newsletter - Pesquisando -->
+          <div class="session-block" id="pesquisandoBlock" style="display:none;">
+            <p class="session-context">Se você ainda está na fase de aprendizado e pesquisa, isso é uma <strong>vantagem</strong> — não um atraso.</p>
+            <p class="session-context">A maioria das pessoas aprende marketing, tráfego e funil antes de aprender como estruturar a experiência do aluno.</p>
+            
+            <div class="session-highlight">
+              <p>✨ Antes de pensar em vender qualquer coisa, o jogo é entender como criar algo que as pessoas realmente terminam.</p>
+            </div>
+            
+            <p class="session-transition">Na Newsletter GAME-ON®, eu compartilho toda semana:</p>
+            
+            <div class="session-info">
+              <p>→ Reflexões estratégicas sobre por que alunos desistem</p>
+              <p>→ Trocas de mentalidade sobre cursos online</p>
+              <p>→ Princípios de gamificação aplicados à educação</p>
+              <p>→ Erros estruturais do mercado digital</p>
+            </div>
+            
+            <a href="https://rafaelavilelanews.beehiiv.com/" class="session-cta-button" id="pesquisandoCTAButton">👉 Entrar na Newsletter GAME-ON® →</a>
           </div>
 
           <div class="session-block" id="sessionBlock">
@@ -580,12 +626,15 @@
     var utmMedium = urlParams.get('utm_medium') || '';
     var utmCampaign = urlParams.get('utm_campaign') || '';
     var utmContent = urlParams.get('utm_content') || '';
+    var origemFromURL = urlParams.get('origem') || '';
 
     var currentStep = 0;
     var answers = {};
     var scores = { entrada: 0, continuidade: 0, acao: 0, prova: 0, fechamento: 0 };
     var tieScores = { entrada: 0, continuidade: 0, acao: 0, prova: 0, fechamento: 0 };
     var quizStarted = false;
+    var perfilAtual = '';
+    var skipToNewsletter = false;
     
     var results = {
       entrada: {
@@ -630,6 +679,28 @@
         isNewsletter: true
       }
     };
+
+    // Resultados para quem NÃO tem curso (newsletter)
+    var resultsNewsletter = {
+      construindo: {
+        title: 'Estrutura em Construção',
+        subtitle: '"Você ainda não tem um problema de engajamento. Você tem uma oportunidade de estruturar seu curso certo desde o início."',
+        items: [
+          'Você ainda está estruturando seu curso ou mentoria',
+          'Ainda não tem alunos ativos para diagnosticar gargalos reais',
+          'E isso é uma vantagem estratégica (não um problema)'
+        ]
+      },
+      pesquisando: {
+        title: 'Exploração e Consciência',
+        subtitle: '"Antes de pensar em vender qualquer coisa, o jogo é entender como criar algo que as pessoas realmente terminam."',
+        items: [
+          'Você está na fase de aprendizado e pesquisa',
+          'Isso é uma vantagem — não um atraso',
+          'O mais inteligente agora é desenvolver o olhar estratégico certo'
+        ]
+      }
+    };
     
     var secondPointTexts = {
       entrada: { title: 'Expectativa desalinhada logo no começo', text: 'Mesmo quando o aluno entra, ele não entende claramente o que vai mudar para ele — o que reduz o envolvimento já nos primeiros passos.' },
@@ -646,7 +717,18 @@
       'acao': 'Acao',
       'prova': 'Prova Social',
       'fechamento': 'Fechamento',
-      'construcao': 'Em Construcao'
+      'construcao': 'Em Construcao',
+      'construindo': 'Em Construcao',
+      'pesquisando': 'Pesquisando'
+    };
+
+    // Mapear perfis
+    var perfilMap = {
+      'curso_ativo': 'Já tenho mentoria/curso online ativo',
+      'primeira_mentoria': 'Criando minha primeira mentoria/curso',
+      'planejando_lancar': 'Planejando lançar algo em breve',
+      'pesquisando_gamificacao': 'Pesquisando sobre gamificação',
+      'agencia_infoprodutor': 'Trabalho com infoprodutores / agência'
     };
 
     // Mapear respostas
@@ -731,6 +813,48 @@
       trackEvent('quiz_view', { page: 'diagnostico-gameon' });
     }
 
+    // Função para lidar com a resposta de perfil (pergunta 1)
+    function handlePerfilAnswer() {
+      var stepEl = document.querySelector('.quiz-step[data-step="1"]');
+      var selectedOption = stepEl.querySelector('.quiz-option.selected');
+      if (!selectedOption) return;
+      
+      perfilAtual = selectedOption.getAttribute('data-value');
+      answers[1] = perfilAtual;
+      
+      if (!quizStarted) {
+        quizStarted = true;
+        trackEvent('quiz_start', { quiz_name: 'diagnostico-gameon' });
+        sendToAppsScript('evento', {
+          email: emailFromURL,
+          evento: 'quiz_iniciou',
+          origem: origemFromURL || 'quiz_diagnostico',
+          detalhes: emailFromURL ? 'com_email' : 'sem_email'
+        });
+      }
+      
+      // Decide o fluxo baseado no perfil
+      if (perfilAtual === 'curso_ativo' || perfilAtual === 'agencia_infoprodutor') {
+        // Tem curso ou é agência → vai para quiz completo
+        skipToNewsletter = false;
+        currentStep = 2;
+        showStep(currentStep);
+        updateProgress();
+      } else if (perfilAtual === 'primeira_mentoria' || perfilAtual === 'planejando_lancar') {
+        // Construindo → pula direto para coleta de email e depois newsletter
+        skipToNewsletter = 'construindo';
+        currentStep = 21; // Vai para coleta de email
+        showStep(currentStep);
+      } else if (perfilAtual === 'pesquisando_gamificacao') {
+        // Pesquisando → pula direto para coleta de email e depois newsletter
+        skipToNewsletter = 'pesquisando';
+        currentStep = 21; // Vai para coleta de email
+        showStep(currentStep);
+      }
+      
+      window.scrollTo(0, 0);
+    }
+
     function nextStep() {
       saveCurrentAnswer();
       
@@ -740,17 +864,26 @@
         sendToAppsScript('evento', {
           email: emailFromURL,
           evento: 'quiz_iniciou',
-          origem: 'quiz_diagnostico',
+          origem: origemFromURL || 'quiz_diagnostico',
           detalhes: emailFromURL ? 'com_email' : 'sem_email'
         });
       }
       
       currentStep++;
       
+      // Se está no loading (step 22), calcula resultado após delay
       if (currentStep === 22) {
         showStep(currentStep);
         updateProgress();
-        setTimeout(function() { calculateResult(); currentStep = 23; showStep(currentStep); }, 2500);
+        setTimeout(function() { 
+          if (skipToNewsletter) {
+            showNewsletterResult(skipToNewsletter);
+          } else {
+            calculateResult(); 
+          }
+          currentStep = 23; 
+          showStep(currentStep); 
+        }, 2500);
         return;
       }
       
@@ -827,7 +960,6 @@
     }
 
     function calculateResult() {
-      if (answers[1] === 'nao_tenho') { showResult('construcao', null); return; }
       var finalScores = {
         entrada: scores.entrada + tieScores.entrada,
         continuidade: scores.continuidade + tieScores.continuidade,
@@ -835,13 +967,45 @@
         prova: scores.prova + tieScores.prova,
         fechamento: scores.fechamento + tieScores.fechamento
       };
-      var allLow = true;
-      for (var key in finalScores) { if (finalScores[key] > 2) allLow = false; }
-      if (allLow) { showResult('construcao', null); return; }
+      
       var sortedScores = [];
       for (var k in finalScores) { sortedScores.push([k, finalScores[k]]); }
       sortedScores.sort(function(a, b) { return b[1] - a[1]; });
       showResult(sortedScores[0][0], sortedScores[1][0]);
+    }
+
+    function showNewsletterResult(tipo) {
+      var result = resultsNewsletter[tipo];
+      
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
+
+      var listHtml = '';
+      for (var i = 0; i < result.items.length; i++) {
+        listHtml += '<li>✨ ' + result.items[i] + '</li>';
+      }
+      document.getElementById('resultList').innerHTML = listHtml;
+
+      // Esconde segundo ponto de atenção e bloco de vídeo
+      document.getElementById('resultSecondary').style.display = 'none';
+      document.getElementById('sessionBlock').style.display = 'none';
+      document.getElementById('newsletterBlock').style.display = 'none';
+
+      // Mostra bloco correto da newsletter
+      if (tipo === 'construindo') {
+        document.getElementById('construindoBlock').style.display = 'block';
+        document.getElementById('pesquisandoBlock').style.display = 'none';
+      } else {
+        document.getElementById('construindoBlock').style.display = 'none';
+        document.getElementById('pesquisandoBlock').style.display = 'block';
+      }
+
+      trackEvent('quiz_result', { 
+        quiz_name: 'diagnostico-gameon',
+        result_primary: tipo,
+        result_secondary: 'none',
+        perfil: perfilAtual
+      });
     }
     
     function showResult(primary, secondary) {
@@ -874,6 +1038,9 @@
       } else {
         if (newsletterBlock) newsletterBlock.style.display = 'none';
         if (videoBlock) videoBlock.style.display = 'block';
+        // Esconde blocos de newsletter
+        document.getElementById('construindoBlock').style.display = 'none';
+        document.getElementById('pesquisandoBlock').style.display = 'none';
         
         // Constrói URL do vídeo com email e UTMs
         var videoParams = [];
@@ -914,13 +1081,12 @@
       if (!name || !email) { alert('Por favor, preencha nome e email.'); return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Email inválido.'); return; }
       
-      // Calcula resultado
-      calculateResult();
-      
-      var resultTag = 'construcao';
+      // Se é para newsletter (pulou quiz), define resultado específico
+      var resultTag = skipToNewsletter || 'construindo';
       var secondResult = '';
       
-      if (answers[1] !== 'nao_tenho') {
+      if (!skipToNewsletter) {
+        // Calcula resultado do diagnóstico
         var finalScores = {
           entrada: scores.entrada + tieScores.entrada,
           continuidade: scores.continuidade + tieScores.continuidade,
@@ -942,7 +1108,8 @@
         gtag('event', 'generate_lead', {
           event_category: 'quiz',
           event_label: 'quiz_diagnostico_gameon',
-          quiz_result: resultTag
+          quiz_result: resultTag,
+          perfil: perfilAtual
         });
       }
       
@@ -959,15 +1126,54 @@
         });
       }
 
+      // ========== Brevo Event (Disparo Imediato para Automação) ==========
+      
+      if (!skipToNewsletter) {
+        // Evento para quem fez o diagnóstico completo
+        Brevo.push([
+          "track",
+          "quiz_concluiu",
+          { email: email, FIRSTNAME: name },
+          {
+            id: "quiz_diagnostico",
+            data: {
+              resultado: resultTag,
+              resultado_secundario: secondResult || '',
+              perfil_atual: perfilAtual,
+              score_entrada: scores.entrada + tieScores.entrada,
+              score_continuidade: scores.continuidade + tieScores.continuidade,
+              score_acao: scores.acao + tieScores.acao,
+              score_prova: scores.prova + tieScores.prova,
+              score_fechamento: scores.fechamento + tieScores.fechamento
+            }
+          }
+        ]);
+      } else {
+        // Evento para quem foi direto para newsletter
+        Brevo.push([
+          "track",
+          "quiz_newsletter",
+          { email: email, FIRSTNAME: name },
+          {
+            id: "quiz_newsletter_" + skipToNewsletter,
+            data: {
+              perfil_atual: perfilAtual,
+              tipo_resultado: skipToNewsletter
+            }
+          }
+        ]);
+      }
+
       // ========== Apps Script (Planilha + Brevo Contato) ==========
       
       sendToAppsScript('quiz', {
         email: email,
         nome: name,
-        origem: 'quiz_diagnostico',
+        // ORIGEM: só define se não veio de ebook (preserva origem original)
+        origem: origemFromURL || 'quiz_diagnostico',
+        perfil_atual: perfilAtual,
         resultado_principal: resultadoLabels[resultTag] || resultTag,
-        resultado_secundario: resultadoLabels[secondResult] || secondResult,
-        tem_curso: temCursoMap[answers[1]] || answers[1] || '',
+        resultado_secundario: secondResult ? (resultadoLabels[secondResult] || secondResult) : '',
         incomodo: incomodoMap[answers[2]] || answers[2] || '',
         problema_em: problemaMap[answers[3]] || answers[3] || '',
         sentimento: sentimentoMap[answers[19]] || answers[19] || '',
@@ -977,43 +1183,22 @@
         score_acao: scores.acao + tieScores.acao,
         score_prova: scores.prova + tieScores.prova,
         score_fechamento: scores.fechamento + tieScores.fechamento,
+        utm_source: utmSource,
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign || 'quiz_diagnostico',
+        utm_content: utmContent,
         extras: {
           respostas_raw: answers,
           scores_raw: scores,
-          tieScores_raw: tieScores
+          tieScores_raw: tieScores,
+          skipToNewsletter: skipToNewsletter
         }
       });
 
-      // ========== Brevo Event (Disparo Imediato para Automação) ==========
-      
-      // Evento personalizado Brevo - quiz_concluiu
-      Brevo.push([
-        "track",
-        "quiz_concluiu",
-        {
-          email: email,
-          FIRSTNAME: name
-        },
-        {
-          id: "quiz_diagnostico",
-          data: {
-            resultado: resultTag,
-            resultado_secundario: secondResult || '',
-            tem_curso: temCursoMap[answers[1]] || '',
-            score_entrada: scores.entrada + tieScores.entrada,
-            score_continuidade: scores.continuidade + tieScores.continuidade,
-            score_acao: scores.acao + tieScores.acao,
-            score_prova: scores.prova + tieScores.prova,
-            score_fechamento: scores.fechamento + tieScores.fechamento
-          }
-        }
-      ]);
-
-      console.log('Quiz enviado - Brevo Event:', {
-        evento: 'quiz_concluiu',
-        email: email,
+      console.log('Quiz enviado:', {
+        perfil: perfilAtual,
         resultado: resultTag,
-        secundario: secondResult
+        skipToNewsletter: skipToNewsletter
       });
 
       nextStep();
