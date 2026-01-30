@@ -52,6 +52,7 @@
       --accent-light: #E8C882;
       --white: #FFFFFF;
       --off-white: #F8F6F3;
+      --cobre: #B87333;
       --gray-100: #F7F7F7;
       --gray-200: #E5E5E5;
       --gray-400: #9CA3AF;
@@ -72,9 +73,14 @@
     .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(212, 168, 83, 0.15); border: 1px solid var(--accent); color: var(--accent); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
     .hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 1.5rem; }
     .hero h1 span { color: var(--accent); }
-    .hero-subtitle { font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); max-width: 600px; margin: 0 auto 2rem; }
-    .hero-tags { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .hero-subtitle { font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); max-width: 600px; margin: 0 auto 1.5rem; }
+    .hero-results { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .hero-result-item { display: flex; align-items: center; gap: 8px; color: var(--white); font-size: 1.05rem; font-weight: 500; background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.25rem; border-radius: 8px; border-left: 3px solid var(--accent); }
+    .hero-cta { margin-bottom: 1.5rem; }
+    .hero-tags { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
     .hero-tag { display: flex; align-items: center; gap: 6px; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
+    .hero-credencial { font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem; }
+    .mid-cta { text-align: center; margin-top: 2rem; }
     .container { max-width: 900px; margin: 0 auto; }
     .pain-section { padding: 4rem 1rem; background: var(--white); }
     .pain-intro { text-align: center; margin-bottom: 2rem; }
@@ -108,9 +114,12 @@
     .forwho-card.no .forwho-list li { color: #991B1B; }
     .cta-section { padding: 4rem 1rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); text-align: center; }
     .cta-section h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--white); margin-bottom: 1.5rem; }
-    .cta-button { display: inline-flex; align-items: center; gap: 1rem; background: var(--accent); color: var(--primary-dark); font-size: 1.15rem; font-weight: 700; padding: 1.5rem 3rem; border-radius: 16px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(212, 168, 83, 0.4); text-decoration: none; }
+    .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--accent); color: var(--primary-dark); font-size: 1.15rem; font-weight: 700; padding: 1.25rem 2.5rem; border-radius: 16px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(212, 168, 83, 0.4); text-decoration: none; min-height: 60px; }
     .cta-button:hover { background: var(--accent-light); transform: translateY(-2px); }
     .cta-microcopy { margin-top: 1rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+    @media (max-width: 640px) {
+      .cta-button { width: 100%; font-size: 1.1rem; padding: 1.25rem 1.5rem; min-height: 64px; }
+    }
     .footer-note { padding: 2rem 1rem; background: var(--off-white); text-align: center; }
     .footer-note p { max-width: 600px; margin: 0 auto; font-size: 0.95rem; color: var(--gray-600); font-style: italic; }
     .quiz-container { display: none; min-height: 100vh; background: var(--off-white); }
@@ -187,6 +196,30 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes spin { to { transform: rotate(360deg); } }
     @media (max-width: 640px) { .hero h1 { font-size: 1.6rem; } .quiz-question { font-size: 1.25rem; } .result-title { font-size: 1.5rem; } }
+
+    /* ========== FOOTER ========== */
+        footer {
+            background: var(--primary);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span {
+            color: var(--cobre);
+        }
+
+        footer p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
   </style>
 </head>
 <body>
@@ -194,13 +227,15 @@
     <section class="hero">
       <div class="hero-content">
         <div class="hero-badge">🎯 Diagnóstico Gratuito</div>
-        <h1>Descubra onde seus alunos estão <span>desistindo</span> — antes de investir mais tempo ou tráfego</h1>
+        <h1>Descubra onde seus alunos estão <span>desistindo</span> - antes de investir mais tempo ou tráfego</h1>
         <p class="hero-subtitle">Descubra qual parte da experiência do seu curso ou mentoria online está impedindo seus alunos de avançar hoje. Sem teoria. Sem achismo. Sem refazer tudo.</p>
+        <button class="cta-button hero-cta" onclick="startQuiz()">👉 Fazer o Diagnóstico Gratuito →</button>
         <div class="hero-tags">
-          <span class="hero-tag">✓ 6–10 minutos</span>
-          <span class="hero-tag">✓ Resultado imediato</span>
-          <span class="hero-tag">✓ Próximo passo claro</span>
+          <span class="hero-tag">⏱ 6–10 min</span>
+          <span class="hero-tag">📊 Resultado imediato</span>
+          <span class="hero-tag">➡️ Próximo passo claro</span>
         </div>
+        <p class="hero-credencial">Método GAME-ON® • Criado por Rafaela Vilela • Especialista em gamificação da jornada do aluno</p>
       </div>
     </section>
     <section class="pain-section">
@@ -237,6 +272,14 @@
         </div>
       </div>
     </section>
+    <section class="cta-section">
+      <div class="container">
+        <div class="mid-cta">
+          <button class="cta-button" onclick="startQuiz()">👉 Fazer o Diagnóstico Agora →</button>
+          <p class="cta-microcopy">Gratuito • Online • Automático</p>
+        </div>
+      </div>
+    </section>
     <section class="forwho-section">
       <div class="container">
         <div class="forwho-grid">
@@ -262,7 +305,13 @@
     <section class="cta-section">
       <div class="container">
         <h2>Pronto para entender por que seus alunos não continuam como você gostaria?</h2>
-        <button class="cta-button" onclick="startQuiz()">👉 Fazer o Diagnóstico da Experiência do Curso →</button>
+        <p class="hero-subtitle">Responda 18 perguntas e descubra:</p>
+        <div class="hero-results">
+          <div class="hero-result-item">✓ O principal ponto onde a jornada trava</div>
+          <div class="hero-result-item">✓ O segundo ponto que precisa de atenção</div>
+          <div class="hero-result-item">✓ Seu próximo passo mais inteligente</div>
+        </div>
+        <button class="cta-button" onclick="startQuiz()">👉 Fazer o Diagnóstico da Jornada do Aluno →</button>
         <p class="cta-microcopy">Gratuito • Online • Automático</p>
       </div>
     </section>
@@ -290,11 +339,15 @@
         <h2 class="quiz-question">Você é:</h2>
         <div class="quiz-options">
           <label class="quiz-option" data-value="curso_ativo"><span class="option-indicator"></span>Já tenho mentoria/curso online ativo</label>
-          <label class="quiz-option" data-value="primeira_mentoria"><span class="option-indicator"></span>Criando minha primeira mentoria/curso</label>
+          <label class="quiz-option" data-value="agencia_infoprodutor"><span class="option-indicator"></span>Trabalho com infoprodutores / agência</label>
+          <label class="quiz-option" data-value="primeira_mentoria"><span class="option-indicator"></span>Criando minha primeira mentoria/curso online</label>
           <label class="quiz-option" data-value="planejando_lancar"><span class="option-indicator"></span>Planejando lançar algo em breve</label>
           <label class="quiz-option" data-value="pesquisando_gamificacao"><span class="option-indicator"></span>Pesquisando sobre gamificação</label>
-          <label class="quiz-option" data-value="agencia_infoprodutor"><span class="option-indicator"></span>Trabalho com infoprodutores / agência</label>
+          <label class="quiz-option" data-value="professor_educador"><span class="option-indicator"></span>Sou professor/educador em escola, faculdade ou instituição</label>
         </div>
+        <p style="font-size: 0.85rem; color: var(--gray-600); margin-top: 1rem; font-style: italic;">
+          ⚠️ O Diagnóstico GAME-ON® foi criado para cursos e mentorias online. Se você atua como professor ou educador em instituições tradicionais, ao final indicarei conteúdos mais adequados para sua realidade.
+        </p>
         <div class="quiz-nav"><button class="btn-back" onclick="prevStep()" disabled>← Voltar</button><button class="btn-next" onclick="handlePerfilAnswer()" disabled>Continuar →</button></div>
       </div>
       <div class="quiz-step" data-step="2">
@@ -588,6 +641,28 @@
             <a href="https://rafaelavilelanews.beehiiv.com/" class="session-cta-button" id="pesquisandoCTAButton">👉 Entrar na Newsletter GAME-ON® →</a>
           </div>
 
+          <!-- Bloco Newsletter - Professor/Educador -->
+          <div class="session-block" id="educadorBlock" style="display:none;">
+            <p class="session-context">Se você atua como professor ou educador em instituição tradicional, seu desafio é diferente.</p>
+            <p class="session-context">Você não precisa vender cursos — precisa <strong>manter alunos engajados e aprendendo</strong> de verdade.</p>
+            <p class="session-context">E isso exige estratégias específicas que vão além do que o diagnóstico GAME-ON® analisa.</p>
+            
+            <div class="session-highlight">
+              <p>✨ Gamificação educacional funciona — mas precisa ser aplicada com o contexto certo.</p>
+            </div>
+            
+            <p class="session-transition">Na Newsletter GAME-ON®, eu compartilho toda semana:</p>
+            
+            <div class="session-info">
+              <p>→ Princípios de engajamento que funcionam em qualquer contexto</p>
+              <p>→ Estratégias de aprendizagem ativa</p>
+              <p>→ Como criar progressão e motivação sem depender de "joguinhos"</p>
+              <p>→ Reflexões sobre educação que vão além do marketing digital</p>
+            </div>
+            
+            <a href="https://rafaelavilelanews.beehiiv.com/" class="session-cta-button" id="educadorCTAButton">👉 Entrar na Newsletter GAME-ON® →</a>
+          </div>
+
           <div class="session-block" id="sessionBlock">
             <p class="session-context">Esse tipo de dificuldade é o que impede seu curso de crescer de forma sustentável — mesmo quando o conteúdo é bom e as vendas acontecem.</p>
             <p class="session-context">Isso não significa que seu curso não funciona. Significa que a estrutura ainda não sustenta o <strong>progresso do aluno até o fim</strong>.</p>
@@ -610,6 +685,11 @@
       </div>
     </main>
   </div>
+      <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">GAME-<span>ON</span>®</div>
+        <p>© 2025 Rafaela Vilela · Todos os direitos reservados</p>
+    </footer>
   <script>
     // ============ CONFIGURAÇÕES ============
     var CONFIG = {
@@ -699,6 +779,15 @@
           'Isso é uma vantagem — não um atraso',
           'O mais inteligente agora é desenvolver o olhar estratégico certo'
         ]
+      },
+      educador: {
+        title: 'Experiência de Aprendizagem',
+        subtitle: '"Seu desafio não é vender cursos — é manter alunos engajados e aprendendo de verdade."',
+        items: [
+          'Você atua como professor ou educador em instituição',
+          'O diagnóstico GAME-ON® foi criado para cursos online que vendem',
+          'Mas os princípios de engajamento e aprendizagem se aplicam a você também'
+        ]
       }
     };
     
@@ -719,16 +808,18 @@
       'fechamento': 'Fechamento',
       'construcao': 'Em Construcao',
       'construindo': 'Em Construcao',
-      'pesquisando': 'Pesquisando'
+      'pesquisando': 'Pesquisando',
+      'educador': 'Professor'
     };
 
     // Mapear perfis
     var perfilMap = {
       'curso_ativo': 'Já tenho mentoria/curso online ativo',
-      'primeira_mentoria': 'Criando minha primeira mentoria/curso',
+      'agencia_infoprodutor': 'Trabalho com infoprodutores / agência',
+      'primeira_mentoria': 'Criando minha primeira mentoria/curso online',
       'planejando_lancar': 'Planejando lançar algo em breve',
       'pesquisando_gamificacao': 'Pesquisando sobre gamificação',
-      'agencia_infoprodutor': 'Trabalho com infoprodutores / agência'
+      'professor_educador': 'Sou professor/educador em escola, faculdade ou instituição'
     };
 
     // Mapear respostas
@@ -833,7 +924,7 @@
         });
       }
       
-      // Decide o fluxo baseado no perfil
+      // Decide o fluxo baseado no perfil (6 opções)
       if (perfilAtual === 'curso_ativo' || perfilAtual === 'agencia_infoprodutor') {
         // Tem curso ou é agência → vai para quiz completo
         skipToNewsletter = false;
@@ -848,6 +939,11 @@
       } else if (perfilAtual === 'pesquisando_gamificacao') {
         // Pesquisando → pula direto para coleta de email e depois newsletter
         skipToNewsletter = 'pesquisando';
+        currentStep = 21; // Vai para coleta de email
+        showStep(currentStep);
+      } else if (perfilAtual === 'professor_educador') {
+        // Professor/Educador → pula direto para coleta de email e depois newsletter específica
+        skipToNewsletter = 'educador';
         currentStep = 21; // Vai para coleta de email
         showStep(currentStep);
       }
@@ -998,13 +1094,18 @@
       document.getElementById('sessionBlock').style.display = 'none';
       document.getElementById('newsletterBlock').style.display = 'none';
 
+      // Esconde todos os blocos de newsletter primeiro
+      document.getElementById('construindoBlock').style.display = 'none';
+      document.getElementById('pesquisandoBlock').style.display = 'none';
+      document.getElementById('educadorBlock').style.display = 'none';
+
       // Mostra bloco correto da newsletter
       if (tipo === 'construindo') {
         document.getElementById('construindoBlock').style.display = 'block';
-        document.getElementById('pesquisandoBlock').style.display = 'none';
-      } else {
-        document.getElementById('construindoBlock').style.display = 'none';
+      } else if (tipo === 'pesquisando') {
         document.getElementById('pesquisandoBlock').style.display = 'block';
+      } else if (tipo === 'educador') {
+        document.getElementById('educadorBlock').style.display = 'block';
       }
 
       trackEvent('quiz_result', { 
@@ -1048,6 +1149,7 @@
         // Esconde blocos de newsletter
         document.getElementById('construindoBlock').style.display = 'none';
         document.getElementById('pesquisandoBlock').style.display = 'none';
+        document.getElementById('educadorBlock').style.display = 'none';
         
         // Constrói URL do vídeo com email e UTMs
         var videoParams = [];
